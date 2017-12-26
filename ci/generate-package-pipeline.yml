@@ -1,0 +1,15 @@
+resources:
+  - name: cf-cli-releases
+    type: github-release
+    source:
+      owner: cloudfoundry
+      repository: cli
+  - name: cloudfoundry-cli-chocolatey
+    type: git
+    source:
+      uri: https://github.com/patrickhuber/cloudfoundry-cli-chocolatey
+
+jobs:
+  - name: release
+    plan: 
+      - get: cf-cli-releases
