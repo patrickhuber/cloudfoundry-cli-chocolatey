@@ -1,15 +1,34 @@
 resources:
+
   - name: cf-cli-releases
     type: github-release
     source:
       owner: cloudfoundry
       repository: cli
+      
   - name: cloudfoundry-cli-chocolatey
     type: git
     source:
       uri: https://github.com/patrickhuber/cloudfoundry-cli-chocolatey
 
 jobs:
-  - name: release
-    plan: 
+
+  - name: build-package
+    plan:
       - get: cf-cli-releases
+        trigger: true
+      - get: cloudfoundry-cli-chocolatey
+      - task: build-cli-package
+        config: 
+          platform: windows
+          image_resource:
+            type: docker-image
+            source: { repository: microsoft/windowsservercore }
+          inputs:
+            - name: cf-cli-releases
+            - name: cloudfoundry-cli-chocolatey
+          outputs: 
+            - name: package
+      
+  - name: release-package
+  
