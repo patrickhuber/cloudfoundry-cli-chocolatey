@@ -17,5 +17,4 @@ sed \
 > stage/tools/chocolateyinstall.ps1
 
 # run choco pack
-# choco pack stage
-choco pack stage --out package-directory 
+choco pack stage/cf-cli.nuspec --out package-directory --allow-unofficial
