@@ -3,22 +3,26 @@ resources:
   - name: choco
     type: git
     source:
-      uri: https://github.com/chocolatey/choco
+      uri: https://github.com/chocolatey/choco.git
 
   - name: choco-linux-image
     type: docker-image
-    source: { repository: patrickhuber/choco-linux }
+    source: 
+      repository: patrickhuber/choco-linux 
+      username: {{dockerhub-username}}
+      password: {{dockerhub-password}}
 
   - name: cf-cli-release
     type: github-release
     source:
       owner: cloudfoundry
       repository: cli
-      
+      access_token: {{github-access-token}}      
+
   - name: cloudfoundry-cli-chocolatey
     type: git
     source:
-      uri: https://github.com/patrickhuber/cloudfoundry-cli-chocolatey
+      uri: https://github.com/patrickhuber/cloudfoundry-cli-chocolatey.git
 
 jobs:
 
@@ -27,13 +31,11 @@ jobs:
       - get: choco
       - put: choco-linux-image
         params: 
-          build: choco/docker
-          dockerfile: Dockerfile.linux
+          build: choco
+          dockerfile: choco/docker/Dockerfile.linux
 
   - name: pack          
     plan:
-      - get: choco
-        passed: [ build ]
       - get: choco-linux-image
         passed: [ build ]
       - get: cf-cli-release
