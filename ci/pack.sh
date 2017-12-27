@@ -1,6 +1,6 @@
 #!/bin/bash
 export CF_VERSION=$(cat cf-cli-release/version)
-export PACKAGE_TOOLS_FILTER="tools/**"
+export PACKAGE_TOOLS_FILTER="stage/tools/**"
 
 # create working directory
 mkdir stage/tools -p
