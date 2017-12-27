@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>cf-cli</id>
+        <title>Cloud Foundry Client</title>
+        <version>$CF_VERSION</version>
+        <description>$CF_DESCRIPTION</description>
+        <authors>Pivotal</authors>
+        <owners>Patrick Huber</owners>        
+        <projectUrl>https://github.com/cloudfoundry/cli</projectUrl>
+        <tags>cf cloudfoundry cloud pivotal</tags>
+        <copyright>Pivotal</copyright>
+        <licenseUrl>https://raw.githubusercontent.com/cloudfoundry/cli/master/LICENSE</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <iconUrl>https://cdn.rawgit.com/ArthurHlt/cf-chocolatey/master/icons/cf.png</iconUrl>
+    </metadata>
+</package>
