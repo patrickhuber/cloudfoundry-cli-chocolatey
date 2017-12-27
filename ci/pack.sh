@@ -1,2 +1,2 @@
 #!/bin/bash
-choco -h
+ls -la
