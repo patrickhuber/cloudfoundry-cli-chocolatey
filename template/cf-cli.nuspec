@@ -14,4 +14,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <iconUrl>https://cdn.rawgit.com/ArthurHlt/cf-chocolatey/master/icons/cf.png</iconUrl>
     </metadata>
+    <files>
+        <file src="tools\\**" target="tools" />
+    </files>
 </package>
