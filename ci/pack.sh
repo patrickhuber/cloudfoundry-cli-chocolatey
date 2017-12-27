@@ -1,6 +1,5 @@
 #!/bin/bash
 export CF_VERSION=$(cat cf-cli-release/version)
-export CF_DESCRIPTION=$(cat cf-cli-release/body)
 
 # create working directory
 mkdir stage/tools -p
@@ -8,14 +7,12 @@ mkdir stage/tools -p
 # create nuspec file
 sed \
  -e 's/$CF_VERSION/'"$CF_VERSION"'/' \
- -e 's/$CF_DESCRIPTION/'"$CF_DESCRIPTION"'/' \
  cloudfoundry-cli-chocolatey/template/cf-cli.nuspec \
 > stage/cf-cli.nuspec
 
 # create the install script
 sed \
  -e 's/$CF_VERSION/'"$CF_VERSION"'/' \
- -e 's/$CF_DESCRIPTION/'"$CF_DESCRIPTION"'/' \
  cloudfoundry-cli-chocolatey/template/chocolateyinstall.ps1 
 > stage/tools/chocolateyinstall.ps1
 

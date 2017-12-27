@@ -4,7 +4,7 @@
         <id>cf-cli</id>
         <title>Cloud Foundry Client</title>
         <version>$CF_VERSION</version>
-        <description>$CF_DESCRIPTION</description>
+        <description>Cloud Foundry Client (cf.exe) is a command line utility for interacting with cloud foundry.</description>
         <authors>Pivotal</authors>
         <owners>Patrick Huber</owners>        
         <projectUrl>https://github.com/cloudfoundry/cli</projectUrl>
