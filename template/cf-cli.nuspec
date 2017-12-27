@@ -15,6 +15,6 @@
         <iconUrl>https://cdn.rawgit.com/ArthurHlt/cf-chocolatey/master/icons/cf.png</iconUrl>
     </metadata>
     <files>
-        <file src="tools\\**" target="tools" />
+        <file src="$PACKAGE_TOOLS_FILTER" target="tools" />
     </files>
 </package>

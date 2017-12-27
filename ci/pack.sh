@@ -1,5 +1,6 @@
 #!/bin/bash
 export CF_VERSION=$(cat cf-cli-release/version)
+export PACKAGE_TOOLS_FILTER="tools/**"
 
 # create working directory
 mkdir stage/tools -p
@@ -7,6 +8,7 @@ mkdir stage/tools -p
 # create nuspec file
 sed \
  -e 's/$CF_VERSION/'"$CF_VERSION"'/' \
+ -e 's/$PACKAGE_TOOLS_FILTER/'"$PACKAGE_TOOLS_FILTER"'/' \
  cloudfoundry-cli-chocolatey/template/cf-cli.nuspec \
 > stage/cf-cli.nuspec
 
