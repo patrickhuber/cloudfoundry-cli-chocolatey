@@ -1,0 +1,9 @@
+---
+platform: linux
+
+inputs:
+  - name: cloudfoundry-cli-chocolatey
+  - name: cf-cli-release
+
+run:
+  path: cloudfoundry-cli-chocolatey/ci/pack.sh

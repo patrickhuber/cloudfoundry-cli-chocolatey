@@ -1,6 +1,15 @@
 resources:
 
-  - name: cf-cli-releases
+  - name: choco
+    type: git
+    source:
+      uri: https://github.com/chocolatey/choco
+
+  - name: choco-linux-image
+    type: docker-image
+    source: { repository: patrickhuber/choco-linux }
+
+  - name: cf-cli-release
     type: github-release
     source:
       owner: cloudfoundry
@@ -13,22 +22,22 @@ resources:
 
 jobs:
 
-  - name: build-package
+  - name: build
+    plan: 
+      - get: choco
+      - put: choco-linux-image
+        params: 
+          build: choco/docker
+          dockerfile: Dockerfile.linux
+
+  - name: pack          
     plan:
-      - get: cf-cli-releases
-        trigger: true
+      - get: choco
+        passed: [ build ]
+      - get: choco-linux-image
+        passed: [ build ]
+      - get: cf-cli-release
       - get: cloudfoundry-cli-chocolatey
-      - task: build-cli-package
-        config: 
-          platform: windows
-          image_resource:
-            type: docker-image
-            source: { repository: microsoft/windowsservercore }
-          inputs:
-            - name: cf-cli-releases
-            - name: cloudfoundry-cli-chocolatey
-          outputs: 
-            - name: package
-      
-  - name: release-package
-  
+      - task: run-choco-pack
+        image: choco-linux-image
+        file: cloudfoundry-cli-chocolatey/ci/pack.yml
