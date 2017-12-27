@@ -5,5 +5,8 @@ inputs:
   - name: cloudfoundry-cli-chocolatey
   - name: cf-cli-release
 
+outputs:
+  - name: package-directory
+  
 run:
   path: cloudfoundry-cli-chocolatey/ci/pack.sh

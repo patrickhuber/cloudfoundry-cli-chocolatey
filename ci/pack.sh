@@ -18,5 +18,4 @@ sed \
 
 # run choco pack
 # choco pack stage
-cat stage/cf-cli.nuspec
-cat stage/tools/chocolateyinstall.ps1
+choco pack stage --out package-directory 
