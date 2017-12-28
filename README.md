@@ -10,7 +10,7 @@ fly -t main set-pipeline \
 -c ci/generate-package-pipeline.yml \
 -v dockerhub-username="your-docker-hub-username" \
 -v dockerhub-password="your-docker-hub-password" \
--v github-api-key="your-github-api-key" 
+-v github-access-token="your-github-access-token" 
 
 fly -t main unpause-pipeline -p cloudfoundry-cli-chocolatey
 ```
