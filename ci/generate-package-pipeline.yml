@@ -39,6 +39,7 @@ jobs:
       - get: choco-linux-image
         passed: [ build ]
       - get: cf-cli-release
+        trigger: true
       - get: cloudfoundry-cli-chocolatey
       - task: run-choco-pack
         image: choco-linux-image
