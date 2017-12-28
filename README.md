@@ -5,7 +5,13 @@ Includes a concourse pipeline and scripts for building the cf cli chocolatey pac
 ## Deploy to Concourse
 
 ```bash
-fly -t main set-pipeline -p cloudfoundry-cli-chocolatey -c ci/generate-package-pipeline.yml
+fly -t main set-pipeline \
+-p cloudfoundry-cli-chocolatey \
+-c ci/generate-package-pipeline.yml \
+-v dockerhub-username="your-docker-hub-username" \
+-v dockerhub-password="your-docker-hub-password" \
+-v github-api-key="your-github-api-key" 
+
 fly -t main unpause-pipeline -p cloudfoundry-cli-chocolatey
 ```
 
